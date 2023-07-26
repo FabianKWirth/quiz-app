@@ -8,33 +8,37 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='./node_modules/bootstrap/dist/css/bootstrap.min.css'>
+    <script src='question.js'></script>
     <script src='main.js'></script>
+    
     <link rel="icon" type="image/x-icon" href="./icon/logo.png">
 </head>
 
-<body>
+<body onload="init()">
     <h1>Quiz App</h1>
     <div class="container">
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+            <img src="./img/question-mark.jpg" class="card-img-top" alt="Fragezeichen">
+            <div id="progress-bar"></div>
             <div class="card-body">
-                <h5 class="card-title">Frage</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
+                <h5 class="card-title" id="question-title"></h5>
+                <p class="card-text" id="question-text"></p>
             </div>
 
-            <div class="card-body">
-                <p class="card-text">Antwort</p>
+            <div id="answers">
             </div>
 
-            <div class="card-body">
-                <p class="card-text">Antwort</p>
-            </div>
 
-            <div class="card-body">
-                <p class="card-text">Antwort</p>
-            </div>
+            <nav class='nav'>
+                <img class='nav-icon' src="icon/chevron-left.png" onclick="goToPreviousQuestion()">
+                <div id="progress-text" class="progress-text"></div>
+                <img class='nav-icon' src="icon/chevron-right.png" onclick="goToNextQuestion()">
+            </nav>
+            
+
         </div>
+        
+        
     </div>
 </body>
 

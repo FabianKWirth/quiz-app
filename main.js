@@ -164,8 +164,6 @@ function goToNextQuestion() {
             completeQuiz();
         }
     }
-
-
 }
 
 function completeQuiz() {

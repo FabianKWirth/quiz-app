@@ -17,7 +17,7 @@
 <body onload="init()">
     <h1>Quiz App</h1>
     <div class="container">
-        <div class="card" style="width: 18rem;">
+        <div class="card" id='questionCard' style="width: 18rem;">
             <img src="./img/question-mark.jpg" class="card-img-top" alt="Fragezeichen">
             <div id="progress-bar"></div>
             <div class="card-body">
@@ -25,7 +25,7 @@
                 <p class="card-text" id="question-text"></p>
             </div>
 
-            <div id="answers">
+            <div id="answers" class="card-body">
             </div>
 
 
@@ -34,8 +34,11 @@
                 <div id="progress-text" class="progress-text"></div>
                 <img class='nav-icon' src="icon/chevron-right.png" onclick="goToNextQuestion()">
             </nav>
-            
+        </div>
 
+        <div class="card" id='resultCard' style="width: 18rem; display: none">
+            <img src="./img/tropy.png" class="card-img-top " alt="Trophäe">
+            <div id="progress-bar"></div>
         </div>
         
         

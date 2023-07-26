@@ -1,7 +1,7 @@
 let currentQuestion = 0;
 
 //If questions just got are initiated -> shuffle them
-shuffleQuestions();
+shuffleAllQuestions();
 
 //If questions have already been initiated -> overwrite initiated question data with the locally saved data
 loadItems();
@@ -23,11 +23,10 @@ function loadItems() {
     if (questionsText) {
         questions = JSON.parse(questionsText);
     }
-    console.log(questions);
 }
 
 
-function shuffleQuestions() {
+function shuffleAllQuestions() {
     for (let i = 0; i < questions.length; i++) {
         questions[i]['Answers'] = shuffle(questions[i]['Answers']);
     }
@@ -42,10 +41,8 @@ function render() {
 
 
 function renderQuestion() {
-    console.log(questions);
     document.getElementById("question-title").innerHTML = `Frage ${currentQuestion + 1}`;
     document.getElementById("question-text").innerHTML = questions[currentQuestion]["Question"];
-
 }
 
 
@@ -56,6 +53,7 @@ function renderAnswers() {
     //If the User has already given an answer for this question
     if(questions[currentQuestion]["Selected"]!=null){
         checkQuestion(questions[currentQuestion]["Selected"]);
+
     }
 }
 
@@ -65,7 +63,7 @@ function getAnswersHtml(answers) {
     
     for (let i = 0; i < answers.length; i++) {
         html += `<div class="card-body">
-        <p class="card-text" id="answer_${i}" onClick="checkQuestion(${i})">${answers[i]}</p>
+        <button class="btn" id="answer_${i}" onClick="checkQuestion(${i})">${answers[i]}</p>
         </div>`;
     }
     
@@ -80,7 +78,7 @@ function checkQuestion(answerId) {
         setAnswerCorrect(answerId);
     } else {
         setAnswerWrong(answerId);
-        setTrueQuestionCorrect();
+        setTrueAnswerCorrect();
     }
     setSelectedAnswer(answerId);
 }
@@ -92,7 +90,7 @@ function answerValidation(answerId) {
 
 
 function setAnswerWrong(answerId) {
-    document.getElementById(`answer_${answerId}`).classList.add('falseQuestion');
+    document.getElementById(`answer_${answerId}`).classList.add('btn-danger');
 }
 
 
@@ -103,11 +101,11 @@ function setSelectedAnswer(answerId){
 }
 
 function setAnswerCorrect(answerId) {
-    document.getElementById(`answer_${answerId}`).classList.add('trueQuestion');
+    document.getElementById(`answer_${answerId}`).classList.add('btn-success');
 }
 
 
-function setTrueQuestionCorrect() {
+function setTrueAnswerCorrect() {
     let answerState = false;
     for (let i = 0; i < questions[currentQuestion]["Answers"].length; i++) {
         answerState = answerValidation([i]);
@@ -123,7 +121,6 @@ function renderProgress() {
     document.getElementById("progress-bar").innerHTML = getProgressBarHtml();
     document.getElementById("progress-text").innerHTML = getProgressInformationHtml();
 }
-
 
 
 function getProgressInformationHtml() {
@@ -167,7 +164,8 @@ function goToNextQuestion() {
 }
 
 function completeQuiz() {
-    alert("Fertig");
+    document.getElementById("resultCard").style="";
+    document.getElementById("questionCard").style="display: none;";
 }
 
 function goToPreviousQuestion() {

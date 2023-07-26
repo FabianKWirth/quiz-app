@@ -4,11 +4,39 @@ body {
     min-height: 100vh;
 }
 
+code{
+    color: black !important;
+    font-size: 1.1em !important;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+.start-card-body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.start-card-button{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.quiz-type-buttons{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
 }
 
 .nav {
@@ -33,6 +61,48 @@ body {
     justify-content: center;
 }
 
+
 .btn {
+    text-align: center;
+    padding: auto;
+}
+
+
+.quiz-btn{
     width: 100% !important;
+}
+
+.btn-start{
+    background-color: rgb(255, 102, 0) !important;
+    float: right !important;
+    color: white !important;
+}
+
+.btn-danger code, .btn-success code{
+ color: white !important;
+}
+
+
+
+
+.inline-icon{
+    object-fit: cover;
+    height: 1.1em;
+}
+
+.color-inverted-icon{
+    filter: invert(1);
+}
+
+.result-main-img{
+    object-fit: cover;
+    width:20% !important;
+}
+
+.trophy-img {
+    object-fit: cover;
+    position: absolute;
+    right:0;
+    height:30vh;
+    top:35vh; 
 }

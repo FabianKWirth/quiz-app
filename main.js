@@ -12,10 +12,6 @@ let currentQuestions = null;
 
 function init() {
     loadItems();
-    console.log("diese werte sollten 0 bzw null sein:");
-    console.log(currentQuestion);
-    console.log(currentQuizName);
-    console.log(currentQuestions)
     if (currentQuestions != null) {
         setItemInvisible("startCard");
         setItemInvisible("selectQuizCard");
@@ -97,8 +93,17 @@ function renderQuestion() {
 function resetQuiz() {
     currentQuestion = 0;
     currentQuizName = null;
-    currentQuestions = null;
+    
     localStorage.removeItem("questions");
+
+
+    //Folgender Fall: Wenn ich nur den array auf den Wert null setze, dann bleiben die "Selected" Werte kurzzeitig erhalten. Wenn ich diese hier explizit lösche, dann funktioniert es
+    for(let i=0;i<currentQuestions.length;i++){
+        currentQuestions[i]["Selected"]=null;
+    }
+    currentQuestions = null;
+
+
     setItemVisible("startCard");
     setItemInvisible("selectQuizCard");
     setItemInvisible("questionCard");
@@ -134,23 +139,20 @@ function getAnswersHtml(answers) {
 
 
 function checkQuestion(answerId) {
-    let answerState = answerValidation(answerId);
+    let answerState = answerValidation(answerId,currentQuestion);
 
     if (answerState) {
         setAnswerCorrect(answerId);
-        console.log("richtig");
     } else {
         setAnswerWrong(answerId);
         setTrueAnswerCorrect();
-        console.log("falsch");
     }
     setSelectedAnswer(answerId);
 }
 
 
-function answerValidation(answerId) {
-    console.log(currentQuestions[currentQuestion]["Answers"][answerId] == currentQuestions[currentQuestion]["CorrectAnswer"]);
-    return currentQuestions[currentQuestion]["Answers"][answerId] == currentQuestions[currentQuestion]["CorrectAnswer"];
+function answerValidation(answerId,questionId) {
+    return currentQuestions[questionId]["Answers"][answerId] == currentQuestions[questionId]["CorrectAnswer"];
 }
 
 
@@ -174,7 +176,7 @@ function setAnswerCorrect(answerId) {
 function setTrueAnswerCorrect() {
     let answerState = false;
     for (let i = 0; i < currentQuestions[currentQuestion]["Answers"].length; i++) {
-        answerState = answerValidation([i]);
+        answerState = answerValidation([i],currentQuestion);
         if (answerState) {
             setAnswerCorrect(i);
             break;
@@ -228,11 +230,10 @@ function checkIfQuizComplete() {
 
 function getCorrectAnswersAmount() {
     let correctAnswers = 0;
-
-    for (const arrayElement of currentQuestions) {
-        if (arrayElement["Selected"] != null) {
-            if (answerValidation(arrayElement["Selected"])) {
-                correctAnswers++;
+    for(let i=0;i<currentQuestions.length;i++){
+            if (currentQuestions[i]["Selected"] != null) {
+                if (answerValidation(currentQuestions[i]["Selected"],i)) {
+                    correctAnswers++;
             }
         }
     }

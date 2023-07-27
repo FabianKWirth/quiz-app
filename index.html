@@ -20,63 +20,84 @@
     </header>
 
     <div class="container">
-        <div class="card" id='startCard'>
-            <div class="card-body start-card-body">
-                <h5 class="card-title">Welcome to The Awesome HTML Quiz</h5>
-                <p class="card-text">Ready for the Challenge?</p>
-                <div class="start-card-button">
-                    <button class="btn btn-start" onclick="showQuizSelection()">Start Now<img
-                            src="./icon/chevron-right.png" class="inline-icon color-inverted-icon"></button>
+
+
+        <div class="card">
+            <div class="row g-0">
+                <ul class="navbar-nav col col-md-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">JS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Java</a>
+                    </li>
+                </ul>
+                <div class="col col-md-9">
+                    <div class="card-body col g-0" id='startCard'>
+                        <h5 class="card-title row-md-2">Welcome to The Awesome Quiz</h5>
+                        <p class="card-text row-md-4">Ready for the Challenge?</p>
+                        <div class="start-card-button row-md-8">
+                            <button class="btn btn-start" onclick="showQuizSelection()">Start Now<img
+                                    src="./icon/chevron-right.png" class="inline-icon color-inverted-icon"></button>
+                        </div>
+                    </div>
+
+                    <div class="card-body col g-0" id="selectQuizCard" style='display: none'>
+                        <h5 class="card-title row-md-2">Welcome to The Awesome HTML Quiz</h5>
+                        <p class="card-text row-md-4">Select what Quiz to take?</p>
+                        <div class="quiz-type-buttons row-md-8" id="quizTypeButtons">
+                        </div>
+                    </div>
+
+                    <div class="card-body col g-0" id="questionCard" style="display: none">
+                       
+                        <h5 class="card-title" id="question-title"></h5>
+                        <p class="card-text" id="question-text"></p>
+                        <div id="answers" class="card-body">
+                        </div>
+                        <div id="progress-bar"></div>
+                        <nav class='nav'>
+                            <img class='nav-icon' src="icon/chevron-left.png" onclick="goToPreviousQuestion()">
+                            <div id="progress-text" class="progress-text"></div>
+                            <img class='nav-icon' src="icon/chevron-right.png" onclick="goToNextQuestion()">
+                        </nav>
+                    </div>
+
+                    <div class="card-body col g-0" id='resultCard'>
+                        <h5 class="card-title row-md-2" id="result-title">Complete Quiz</h5>
+                        <p class="card-text row-md-4" id="result-text"></p>
+                        <div class="card-body row-md-8">
+                            <button class="btn btn-primary">Share</button>
+                            <button class="btn" onClick='resetQuiz()'>Replay</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card" id='selectQuizCard' style="display: none">
-            <div class="card-body start-card-body">
-                <h5 class="card-title">Welcome to The Awesome HTML Quiz</h5>
-                <p class="card-text">Select what Quiz to take?</p>
-                <div class="quiz-type-buttons" id="quizTypeButtons">
 
-                </div>
-            </div>
-        </div>
 
-        <div class="card" id='questionCard' style="display: none">
-            <img src="./img/question-mark.jpg" class="card-img-top" alt="Fragezeichen">
-            <div id="progress-bar"></div>
-            <div class="card-body">
-                <h5 class="card-title" id="question-title"></h5>
-                <p class="card-text" id="question-text"></p>
+            <div class="card" id='questionCard' style="display: none">
+
+
+
+
+
+
             </div>
 
-            <div id="answers" class="card-body">
-            </div>
-
-
-            <nav class='nav'>
-                <img class='nav-icon' src="icon/chevron-left.png" onclick="goToPreviousQuestion()">
-                <div id="progress-text" class="progress-text"></div>
-                <img class='nav-icon' src="icon/chevron-right.png" onclick="goToNextQuestion()">
-            </nav>
-        </div>
-
-        <div class="card" id='resultCard' style="display: none">
-            <img src="./icon/brain result.png" class="card-img-top result-main-img" alt="Fragezeichen">
-            <div class="card-body">
-                <h5 class="card-title" id="result-title">Complete Quiz</h5>
-                <p class="card-text" id="result-text"></p>
-                <div class="card-body">
-                    <button class="btn btn-primary">Share</button>
-                </div>
-                <div class="card-body">
-                    <button class="btn" onClick='resetQuiz()'>Replay</button>
-                </div>
+            <div class="card" id='resultCard' style="display: none">
+                <img src="./icon/brain result.png" class="card-img-top result-main-img" alt="Fragezeichen">
 
             </div>
-        </div>
 
-    </div>
-    <img src="./img/tropy.png" class="trophy-img" id="trophyImg" style="display: none;" alt="Trophäe">
+        </div>
+        <img src="./img/tropy.png" class="trophy-img" id="trophyImg" style="display: none;" alt="Trophäe">
 </body>
 
 </html>

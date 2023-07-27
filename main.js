@@ -219,6 +219,12 @@ function getAnsweredQuestionsAmount() {
     return amount;
 }
 
+function setSidebarNav(){
+    let nav=document.getElementById("side-bar");
+    navHtml=`<ul>
+    <li>`;
+}
+
 
 function checkIfQuizComplete() {
     if (getAnsweredQuestionsAmount() == currentQuestions.length) {

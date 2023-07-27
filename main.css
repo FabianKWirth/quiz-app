@@ -23,15 +23,17 @@ header{
 
 .card{
     min-width: 60%;
+    display:flex;
+    flex-direction: row;
 }
 
-.start-card-body{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
+
+.navbar-nav{
+    background-color: #27355c;
+    color: white;
+    padding: 16px !important;
 }
+
 
 .start-card-button{
     width: 100%;

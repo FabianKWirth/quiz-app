@@ -242,7 +242,6 @@ function getCorrectAnswersAmount() {
 }
 
 
-
 function quizResultSimple() {
     let correctAnswers = getCorrectAnswersAmount();
     return `Your Score: ${correctAnswers} / ${currentQuestions.length}`;
@@ -268,12 +267,14 @@ function goToNextQuestion() {
     }
 }
 
+
 function goToPreviousQuestion() {
     if (currentQuestion > 0) {
         currentQuestion--;
     }
     renderQuiz();
 }
+
 
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;

@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Rubik';
-    min-height: 100vh;
+    height:100vh;
 }
 
 code{
@@ -9,11 +9,20 @@ code{
     font-size: 1.1em !important;
 }
 
+header{
+    height: 66px;
+    padding: 16px;
+}
+
 .container {
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: calc(100vh - 82px) !important;
+}
+
+.card{
+    min-width: 60%;
 }
 
 .start-card-body{

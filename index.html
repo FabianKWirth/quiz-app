@@ -15,20 +15,23 @@
 </head>
 
 <body onload="init()">
-    <h1>Quiz App</h1>
-    <div class="container">
+    <header>
+        <h1>Quiz App</h1>
+    </header>
 
-        <div class="card" id='startCard' >
+    <div class="container">
+        <div class="card" id='startCard'>
             <div class="card-body start-card-body">
-                <h5 class="card-title" >Welcome to The Awesome HTML Quiz</h5>
-                <p class="card-text" >Ready for the Challenge?</p>
+                <h5 class="card-title">Welcome to The Awesome HTML Quiz</h5>
+                <p class="card-text">Ready for the Challenge?</p>
                 <div class="start-card-button">
-                    <button class="btn btn-start" onclick="showQuizSelection()">Start Now<img src="./icon/chevron-right.png" class="inline-icon color-inverted-icon"></button>
+                    <button class="btn btn-start" onclick="showQuizSelection()">Start Now<img
+                            src="./icon/chevron-right.png" class="inline-icon color-inverted-icon"></button>
                 </div>
             </div>
         </div>
 
-        <div class="card" id='selectQuizCard'  style="display: none">
+        <div class="card" id='selectQuizCard' style="display: none">
             <div class="card-body start-card-body">
                 <h5 class="card-title">Welcome to The Awesome HTML Quiz</h5>
                 <p class="card-text">Select what Quiz to take?</p>
@@ -73,7 +76,6 @@
         </div>
 
     </div>
-
     <img src="./img/tropy.png" class="trophy-img" id="trophyImg" style="display: none;" alt="Trophäe">
 </body>
 

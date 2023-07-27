@@ -80,7 +80,7 @@ function setItemVisible(cardId){
 }
 
 function setItemInvisible(cardId){
-    document.getElementById(cardId).style = "display: none;";
+    document.getElementById(cardId).style = "display: none !important;";
 }
 
 

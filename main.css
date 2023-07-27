@@ -2,11 +2,20 @@ body {
     margin: 0;
     font-family: 'Rubik';
     height:100vh;
+    font-size: 32px !important;
+}
+
+h1 {
+    font-size: 48px !important;
+}
+
+h5{
+    font-size: 36px !important
 }
 
 code{
     color: black !important;
-    font-size: 1.1em !important;
+    font-size: 32px !important;
 }
 
 header{
@@ -22,7 +31,8 @@ header{
 }
 
 .card{
-    min-width: 60%;
+    min-width: 80% !important;
+    height: 100% !important;
     display:flex;
     flex-direction: row;
 }
@@ -76,6 +86,7 @@ header{
 .btn {
     text-align: center;
     padding: auto;
+    font-size: 32px !important;
 }
 
 
@@ -116,4 +127,11 @@ header{
     right:0;
     height:30vh;
     top:35vh; 
+}
+
+
+@media screen and (max-width: 1600px){
+    body {
+        font-size: smaller;
+    }
 }

@@ -22,7 +22,7 @@
     <div class="container">
 
 
-        <div class="card">
+        <div class="card w-75">
             <div class="row g-0">
                 <ul class="navbar-nav col col-md-3">
                     <li class="nav-item">
@@ -48,14 +48,14 @@
                         </div>
                     </div>
 
-                    <div class="card-body col g-0" id="selectQuizCard" style='display: none'>
+                    <div class="card-body col g-0" id="selectQuizCard" style="display: none !important">
                         <h5 class="card-title row-md-2">Welcome to The Awesome HTML Quiz</h5>
                         <p class="card-text row-md-4">Select what Quiz to take?</p>
                         <div class="quiz-type-buttons row-md-8" id="quizTypeButtons">
                         </div>
                     </div>
 
-                    <div class="card-body col g-0" id="questionCard" style="display: none">
+                    <div class="card-body col g-0" id="questionCard" style="display: none !important">
                        
                         <h5 class="card-title" id="question-title"></h5>
                         <p class="card-text" id="question-text"></p>
@@ -69,7 +69,8 @@
                         </nav>
                     </div>
 
-                    <div class="card-body col g-0" id='resultCard'>
+                    <div class="card-body col g-0 d-flex align-items-center flex-column" id='resultCard' style="display: none !important">
+                        <img src="./icon/brain result.png" class="card-img-top w-25" alt="Gehirn Icon">
                         <h5 class="card-title row-md-2" id="result-title">Complete Quiz</h5>
                         <p class="card-text row-md-4" id="result-text"></p>
                         <div class="card-body row-md-8">
@@ -79,23 +80,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-            <div class="card" id='questionCard' style="display: none">
-
-
-
-
-
-
-            </div>
-
-            <div class="card" id='resultCard' style="display: none">
-                <img src="./icon/brain result.png" class="card-img-top result-main-img" alt="Fragezeichen">
-
-            </div>
-
         </div>
         <img src="./img/tropy.png" class="trophy-img" id="trophyImg" style="display: none;" alt="Trophäe">
 </body>

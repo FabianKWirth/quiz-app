@@ -1,6 +1,5 @@
 let quizTypes = Object.keys(questionData);
 
-
 let currentQuestion = 0;
 let currentQuizName = null;
 let currentQuestions = null;
@@ -12,6 +11,7 @@ let currentQuestions = null;
 
 function init() {
     loadItems();
+    renderNavItems();
     if (currentQuestions != null) {
         setItemInvisible("startCard");
         setItemInvisible("selectQuizCard");
@@ -33,9 +33,11 @@ function saveItems() {
 
 
 function selectQuizQuestions(givenQuizId) {
-    currentQuestions=questionData[quizTypes[givenQuizId]];
+    currentQuizName=quizTypes[givenQuizId];
+    currentQuestions=questionData[currentQuizName];
     shuffleAllQuestions();
     init();
+    setNavItemActive(currentQuizName);
 }
 
 
@@ -79,6 +81,7 @@ function setItemVisible(cardId){
     document.getElementById(cardId).style = "";
 }
 
+
 function setItemInvisible(cardId){
     document.getElementById(cardId).style = "display: none !important;";
 }
@@ -93,7 +96,6 @@ function renderQuestion() {
 function resetQuiz() {
     currentQuestion = 0;
     currentQuizName = null;
-    
     localStorage.removeItem("questions");
 
 
@@ -279,6 +281,33 @@ function goToPreviousQuestion() {
         currentQuestion--;
     }
     renderQuiz();
+}
+
+function renderNavItems(){
+    navBar=document.getElementById("navbar");
+    navBar.innerHTML=getNavItemsHtml();
+}
+
+function getNavItemsHtml(){
+    html=``;
+    for(let i=0;i<quizTypes.length;i++){
+        html+=` <li class="nav-item" id="${quizTypes[i]}">
+                    <p class="px-3" >${quizTypes[i]}</p>
+                </li>`;
+    }
+    return html;
+}
+
+function setNavItemActive(itemId){
+    console.log(itemId);
+    element=document.getElementById(itemId);
+    element.classList.add("border-start");
+    element.classList.add("border-5");
+    element.classList.add("border-white");
+}
+
+function setCurrentActiveQuizType(){
+    document.getElementById
 }
 
 

@@ -1,9 +1,13 @@
 let quizTypes = Object.keys(questionData);
 
 let currentQuestion = 0;
-let currentQuizName = null;//Bsp. Values "HTML","Java"
+let currentQuizName = null; //Bsp. Values "HTML","Java"
 let currentQuestions = null;
 
+let AUDIO_SUCCESS = new Audio('sounds/sound-correct.wav');
+let AUDIO_FAIL = new Audio('sounds/sound-incorrect.wav');
+setQuarterVolume(AUDIO_SUCCESS);
+setQuarterVolume(AUDIO_FAIL);
 
 function init() {
     loadItems();
@@ -50,7 +54,6 @@ function saveItems() {
 
 
 function loadItems() {
-
     let param = localStorage.getItem('questions');
     if (param) {
         currentQuestions = JSON.parse(param);
@@ -121,12 +124,26 @@ function checkAnswer(answerId) {
     let answerState = answerValidation(answerId, currentQuestion);
     if (answerState) {
         setAnswerCorrect(answerId);
+        playAudio("success");
     } else {
         setAnswerWrong(answerId);
         setTrueAnswerCorrect();
+        playAudio("fail");
     }
     setSelectedAnswer(answerId);
     disableRestAnswerButtons();
+}
+
+
+function playAudio(status){
+    if (currentQuestions[currentQuestion]["Selected"] == null) {
+        //Checken ob Ausgewählte Antwort neu ist
+        if(status=="success"){
+            AUDIO_SUCCESS.play();
+        }else{
+            AUDIO_FAIL.play();
+        }
+    }
 }
 
 
@@ -222,7 +239,7 @@ function getCorrectAnswersAmount() {
 
 function quizResultSimple() {
     let correctAnswers = getCorrectAnswersAmount();
-    return `Your Score: ${correctAnswers} / ${currentQuestions.length}`;
+    return `<div class="score-label">Your Score</div><div class"d-flex align-items-center justify-content-center"><b> ${correctAnswers} / ${currentQuestions.length}</b></div>`;
 }
 
 
@@ -246,20 +263,22 @@ function resetQuiz() {
     currentQuestion = 0;
     currentQuizName = null;
     resetItems();
-
-    //Folgender Fall: Wenn ich nur den Array(currentQuestions) auf den Wert null setze, dann bleiben die "Selected" Werte kurzzeitig erhalten. Wenn ich diese hier explizit lösche, dann funktioniert es
-    for (let i = 0; i < currentQuestions.length; i++) {
-        currentQuestions[i]["Selected"] = null;
-    }
-    currentQuestions = null;
-
-
+    resetCurrentQuestions();
     setItemVisible("startCard");
     setItemInvisible("selectQuizCard");
     setItemInvisible("questionCard");
     setItemInvisible("resultCard");
     setItemInvisible("trophyImg");
     init();
+}
+
+
+function resetCurrentQuestions() {
+    //Folgender Fall: Wenn ich nur den Array(currentQuestions) auf den Wert null setze, dann bleiben die "Selected" Werte kurzzeitig erhalten. Wenn ich diese hier explizit lösche, dann funktioniert es.
+    for (let i = 0; i < currentQuestions.length; i++) {
+        currentQuestions[i]["Selected"] = null;
+    }
+    currentQuestions = null;
 }
 
 
@@ -271,7 +290,6 @@ function goToNextQuestion() {
         if (checkIfQuizComplete()) {
             completeQuiz();
         }
-
     }
 }
 
@@ -302,7 +320,6 @@ function getNavItemsHtml() {
 
 
 function setNavItemActive(itemId) {
-    console.log(itemId);
     element = document.getElementById(itemId);
     element.classList.add("border-start");
     element.classList.add("border-5");
@@ -348,4 +365,9 @@ function shuffle(array) {
     }
 
     return array;
+}
+
+
+function setQuarterVolume(audio) {
+    audio.volume = 0.1;
 }

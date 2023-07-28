@@ -6,17 +6,21 @@ body {
     font-size: 24px !important;
 }
 
-h1 {
-    font-size: 48px !important;
-    color: white !important;
-    text-align: center;
-    font-family: 'Rubik';
-}
 
 h5 {
     font-family: 'Rubik';
     font-size: 36px !important;
     font-weight: bold !important;
+}
+
+b {
+    font-size: 32px;
+}
+
+.score-label {
+    font-weight: bold !important;
+    color: orange !important;
+    font-size: 32px !important;
 }
 
 code {
@@ -80,7 +84,7 @@ code {
     width: 32px;
 }
 
-.progress{
+.progress {
     --bs-progress-height: 2rem !important;
 }
 
@@ -164,9 +168,10 @@ ol>li::before {
     content: counter(list, upper-alpha);
     display: inline-grid;
     place-items: center;
-    min-height: 64px;
-    min-width: 64px;
-    
+    min-height: 48px;
+    min-width: 48px;
+    margin: 8px;
+
 }
 
 .li-default {
@@ -196,19 +201,29 @@ ol>li::before {
     color: white;
 }
 
+@media screen and (max-width: 1000px) {
+    .quiz-btn {
+        font-size: 20px !important;
+    }
 
-@media screen and (max-width: 1600px) {
-    
+    code {
+        font-size: 20px !important;
+    }
 }
 
-
+@media screen and (max-width: 900px) {
+    .trophy-img {
+        height: 20vh;
+        top: 40vh;
+    }
+}
 
 @media screen and (max-width: 600px) {
     .trophy-img {
         display: none;
     }
 
-    .container{
-        margin:4px !important;
+    .container {
+        margin: 4px !important;
     }
 }

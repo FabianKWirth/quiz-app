@@ -20,38 +20,43 @@
         <div class="card w-75">
             <div class="row g-0 d-flex flex-row">
                 <div class="navbar d-flex justify-content-start align-items-start flex-column col-md-3 ">
-                    <img src="./icon/brain result.png" class="app-img mx-auto">
-                    <h1 class="mx-auto">Quiz-App</h1>
+                    <img src="./icon/logo.png" class="app-img mx-auto" alt="Quiz App Logo">
                     <ul class="navbar-nav px-0" id="navbar">
-                    
+
                     </ul>
                 </div>
-                
+
                 <div class="col col-md-9">
-                    <div class="card-body col g-0 d-flex justify-content-center align-items-center flex-column h-100" id='startCard'>
-                        <h5 class="card-title row-md-2 mx-auto">Welcome to The Awesome Quiz</h5>
-                        <p class="card-text row-md-4 mx-auto">Ready for the Challenge?</p>
+                    <div class="card-body col g-0 d-flex justify-content-between align-items-center flex-column h-100"
+                        id='startCard'>
+                        <div>
+                            <h5 class="card-title row-md-2 mx-auto">Welcome to The Awesome Quiz</h5>
+                            <p class="card-text row-md-4 mx-auto">Ready for the Challenge?</p>
+                        </div>
                         <div class="start-card-button row-md-8">
                             <button class="btn btn-start" onclick="showQuizSelection()">Start Now<img
                                     src="./icon/chevron-right.png" class="inline-icon color-inverted-icon"></button>
                         </div>
                     </div>
 
-                    <div class="card-body col g-0 d-flex justify-content-center align-items-center flex-column h-100" id="selectQuizCard" style="display: none !important">
-                        <h5 class="card-title row-md-2">Welcome to The Awesome HTML Quiz</h5>
-                        <p class="card-text row-md-4">Select what Quiz to take?</p>
+                    <div class="card-body col g-0 d-flex justify-content-between align-items-center flex-column h-100"
+                        id="selectQuizCard" style="display: none !important">
+                        <div>
+                            <h5 class="card-title row-md-2">Welcome to The Awesome HTML Quiz</h5>
+                            <p class="card-text row-md-4">Select what Quiz to take?</p>
+                        </div>
                         <div class="quiz-type-buttons row-md-8 flex-wrap" id="quizTypeButtons">
                         </div>
                     </div>
 
                     <div class="card-body col g-0" id="questionCard" style="display: none !important">
-                       
+
                         <h5 class="card-title" id="question-title"></h5>
                         <p class="card-text" id="question-text"></p>
-                        
+
                         <ol id="answers">
                         </ol>
-                        
+
                         <div id="progress-bar" class="h-25"></div>
 
                         <nav class='nav'>
@@ -61,10 +66,11 @@
                         </nav>
                     </div>
 
-                    <div class="card-body col g-0 d-flex align-items-center flex-column" id='resultCard' style="display: none !important">
+                    <div class="card-body col g-0 d-flex align-items-center flex-column" id='resultCard'
+                        style="display: none !important">
                         <img src="./icon/brain result.png" class="card-img-top w-25" alt="Gehirn Icon">
                         <h5 class="card-title row-md-2" id="result-title">Complete Quiz</h5>
-                        <p class="card-text row-md-4" id="result-text"></p>
+                        <div class="card-text row-md-4 w-100 d-flex justify-content-center align-content-center flex-nowrap" id="result-text" style="gap:16px"></div>
                         <div class="card-body row-md-8">
                             <button class="btn btn-primary">Share</button>
                             <button class="btn" onClick='resetQuiz()'>Replay</button>

@@ -121,7 +121,7 @@ function renderAnswers() {
 
     //If the User has already given an answer for this question
     if (currentQuestions[currentQuestion]["Selected"] != null) {
-        checkQuestion(currentQuestions[currentQuestion]["Selected"]);
+        checkAnswer(currentQuestions[currentQuestion]["Selected"]);
 
     }
 }
@@ -131,16 +131,16 @@ function getAnswersHtml(answers) {
     let html = "";
 
     for (let i = 0; i < answers.length; i++) {
-        html += `<div class="card-body">
-        <button class="btn quiz-btn" id="answer_${i}" onClick="checkQuestion(${i})">${answers[i]}</button>
-        </div>`;
+        html += `<li class="li-default">
+        <button class="btn quiz-btn " id="answer_${i}" onClick="checkAnswer(${i})">${answers[i]}</button>
+        </li>`;
     }
 
     return html;
 }
 
 
-function checkQuestion(answerId) {
+function checkAnswer(answerId) {
     let answerState = answerValidation(answerId,currentQuestion);
 
     if (answerState) {
@@ -159,7 +159,7 @@ function answerValidation(answerId,questionId) {
 
 
 function setAnswerWrong(answerId) {
-    document.getElementById(`answer_${answerId}`).classList.add('btn-danger');
+    document.getElementById(`answer_${answerId}`).parentNode.classList.add('li-danger');
 }
 
 
@@ -171,7 +171,7 @@ function setSelectedAnswer(answerId) {
 
 
 function setAnswerCorrect(answerId) {
-    document.getElementById(`answer_${answerId}`).classList.add('btn-success');
+    document.getElementById(`answer_${answerId}`).parentNode.classList.add('li-success');
 }
 
 
@@ -219,12 +219,6 @@ function getAnsweredQuestionsAmount() {
         }
     }
     return amount;
-}
-
-function setSidebarNav(){
-    let nav=document.getElementById("side-bar");
-    navHtml=`<ul>
-    <li>`;
 }
 
 

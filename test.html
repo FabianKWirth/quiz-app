@@ -9,29 +9,72 @@
   <script src='main.js'></script>
 
   <link rel="icon" type="image/x-icon" href="./icon/logo.png">
+  <style>
+ ul {
+    	padding-left: 20px;
+    }
+    ul > li {
+    	list-style: none;
+    	position: relative;
+    	margin-bottom: 7px;
+    }
+    ul > li:before {
+    	color: #F5C400;
+    	content: '\2022';
+    	font-size: 1.2em;
+    	position: absolute;
+    	top: -.2em;
+    	left: -1em;
+    }
+    ul li ul li:before {
+    	content: '\25cB';
+    }
+    .nav-item:before {
+    	content: '';
+    	padding: 0;
+    }
+    ol > li {
+    	list-style-type: none;
+    	counter-increment: list;
+    	position: relative;
+    }
+    ol > li:before {
+    	content: counter(list) ".";
+    	position: absolute;
+    	left: -2em;
+    	text-align: right;
+    	color: #893579;
+    }
+
+  </style>
 </head>
 
 <body>
   <div class="container">
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <nav class="nav flex-column">
-            <a class="nav-link active mb-3" aria-current="page" href="#">Active</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </nav>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="card-body">
+      <p>We know there are many things to consider, so ask yourself some of the following questions to help narrow down your choices.
+          <ol>
+              <li><b>Do you prefer to pay more out of your paycheck (premiums) and less when you get medical care or the other way around? </b></li>
+                <ul>
+                    <li>The Gold plan premiums are quite a bit higher, but the plan covers more of the cost when you need medical care and begins sharing the cost of your care sooner.</li>
+                    <li>The Bronze plan premiums are the lowest, but you will pay more of your medical care costs.</li>
+                    <li>The Silver plan is in the middle.</li>
+                </ul>
+              <li><b>Are you and your family generally healthy, often just getting preventive care during the year?  </b></li>
+              <ul>
+                  <li>Take a closer look at the Bronze plan.</li>
+              </ul>
+              <li><b>Does someone have a chronic condition or a potential surgery expected in 2019?</b></li>
+              <ul>
+                  <li>Consider the Gold and Silver plans since you know you will have significant medical expenses.</li>
+              </ul>
+              <li><b>Do you or a family member take prescription drugs regularly?</b></li>
+              <ul>
+                  <li>The Gold plan pays a higher percentage of the cost of medications.</li>
+              </ul>
+        </ol>
+              You don’t have to figure it out by yourself. Visit ALEX®, your virtual benefits counselor, to help you decide which plan will work best for you and your family next year. <br>
+      </p>
+ </div>
   </div>
 </body>

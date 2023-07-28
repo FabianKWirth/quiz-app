@@ -80,6 +80,10 @@ code {
     width: 32px;
 }
 
+.progress{
+    --bs-progress-height: 2rem !important;
+}
+
 .progress-text {
     display: flex;
     align-items: center;
@@ -153,14 +157,15 @@ ol>li {
     flex-direction: row;
     counter-increment: list;
     margin-bottom: 12px;
+    margin-left: -36px;
 }
 
 ol>li::before {
     content: counter(list, upper-alpha);
     display: inline-grid;
     place-items: center;
-    height: 64px;
-    width: 64px;
+    min-height: 64px;
+    min-width: 64px;
     
 }
 

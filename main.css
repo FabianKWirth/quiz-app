@@ -2,7 +2,8 @@ body {
     margin: 0;
     font-family: 'Rubik' !important;
     height: 100vh;
-    font-size: 32px !important;
+    max-height: fit-content;
+    font-size: 24px !important;
 }
 
 h1 {
@@ -23,16 +24,11 @@ code {
     font-size: 32px !important;
 }
 
-header {
-    height: 66px;
-    padding: 16px;
-}
-
 .container {
     display: flex !important;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 82px) !important;
+    min-height: calc(100vh) !important;
 }
 
 .card {
@@ -163,10 +159,9 @@ ol>li::before {
     content: counter(list, upper-alpha);
     display: inline-grid;
     place-items: center;
-   
     height: 64px;
     width: 64px;
-    margin: 8px;
+    
 }
 
 .li-default {
@@ -198,13 +193,17 @@ ol>li::before {
 
 
 @media screen and (max-width: 1600px) {
-    body {
-        font-size: smaller;
-    }
+    
 }
+
+
 
 @media screen and (max-width: 600px) {
     .trophy-img {
         display: none;
+    }
+
+    .container{
+        margin:4px !important;
     }
 }

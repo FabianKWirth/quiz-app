@@ -131,8 +131,8 @@ function getAnswersHtml(answers) {
     let html = "";
 
     for (let i = 0; i < answers.length; i++) {
-        html += `<li class="li-default">
-        <button class="btn quiz-btn " id="answer_${i}" onClick="checkAnswer(${i})">${answers[i]}</button>
+        html += `<li class="li-default" onClick="javascript:checkAnswer(${i})">
+        <button class="btn quiz-btn " id="answer_${i}">${answers[i]}</button>
         </li>`;
     }
 

@@ -26,10 +26,7 @@ function showQuizSelection() {
     document.getElementById("quizTypeButtons").innerHTML = getQuizOptionsHtml()
 }
 
-function saveItems() {
-    let questionsText = JSON.stringify(currentQuestions);
-    localStorage.setItem('questions', questionsText);
-}
+
 
 
 function selectQuizQuestions(givenQuizId) {
@@ -50,11 +47,35 @@ function getQuizOptionsHtml() {
 }
 
 
+function saveItems() {
+    localStorage.setItem('questions', JSON.stringify(currentQuestions));
+    localStorage.setItem('currentQuestion',JSON.stringify(currentQuestion));
+    localStorage.setItem('currentQuizName',JSON.stringify(currentQuizName));
+}
+
+
 function loadItems() {
-    let questionsText = localStorage.getItem('questions');
-    if (questionsText) {
-        currentQuestions = JSON.parse(questionsText);
+
+    let param = localStorage.getItem('questions');
+    if (param) {
+        currentQuestions = JSON.parse(param);
     }
+    param="";
+    param = localStorage.getItem('currentQuestion');
+    if (param) {
+        currentQuestion = JSON.parse(param);
+    }
+    param="";
+    param = localStorage.getItem('currentQuizName');
+    if (param) {
+        currentQuizName = JSON.parse(param);
+    }
+}
+
+function resetItems(){
+    localStorage.setItem('questions', "");
+    localStorage.setItem('currentQuestion',"");
+    localStorage.setItem('currentQuizName',"");
 }
 
 
@@ -65,12 +86,12 @@ function shuffleAllQuestions() {
 }
 
 function renderQuiz() {
-    
     if (checkIfQuizComplete() == false) {
         renderQuestion();
         renderAnswers();
         renderProgress();
         saveItems(); //checken ob nötig
+        setNavItemActive(currentQuizName);
     } else {
         completeQuiz();
     }
@@ -96,10 +117,9 @@ function renderQuestion() {
 function resetQuiz() {
     currentQuestion = 0;
     currentQuizName = null;
-    localStorage.removeItem("questions");
+    resetItems();
 
-
-    //Folgender Fall: Wenn ich nur den array auf den Wert null setze, dann bleiben die "Selected" Werte kurzzeitig erhalten. Wenn ich diese hier explizit lösche, dann funktioniert es
+    //Folgender Fall: Wenn ich nur den Array(currentQuestions) auf den Wert null setze, dann bleiben die "Selected" Werte kurzzeitig erhalten. Wenn ich diese hier explizit lösche, dann funktioniert es
     for(let i=0;i<currentQuestions.length;i++){
         currentQuestions[i]["Selected"]=null;
     }
@@ -129,10 +149,9 @@ function renderAnswers() {
 
 function getAnswersHtml(answers) {
     let html = "";
-
     for (let i = 0; i < answers.length; i++) {
         html += `<li class="li-default" onClick="javascript:checkAnswer(${i})">
-        <button class="btn quiz-btn " id="answer_${i}">${answers[i]}</button>
+        <button class="btn quiz-btn" id="answer_${i}">${answers[i]}</button>
         </li>`;
     }
 
@@ -142,7 +161,6 @@ function getAnswersHtml(answers) {
 
 function checkAnswer(answerId) {
     let answerState = answerValidation(answerId,currentQuestion);
-
     if (answerState) {
         setAnswerCorrect(answerId);
     } else {
@@ -286,7 +304,7 @@ function getNavItemsHtml(){
     html=``;
     for(let i=0;i<quizTypes.length;i++){
         html+=` <li class="nav-item" id="${quizTypes[i]}">
-                    <p class="px-3" >${quizTypes[i]}</p>
+                    <p class="px-3">${quizTypes[i]}</p>
                 </li>`;
     }
     return html;

@@ -183,5 +183,4 @@ let questionData = {
       "Selected": null
     }
   ]
-}
-  ;
+};
